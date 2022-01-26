@@ -12,9 +12,7 @@ RUN <<-eof
   set -e
   mkdir -p /out/etc/apk/
   echo https://dl-cdn.alpinelinux.org/alpine/${ALPINE_VERSION}/main >> /out/etc/apk/repositories
-  if [ "${TARGETARCH}"  != "riscv64" ]; then
-    echo https://dl-cdn.alpinelinux.org/alpine/${ALPINE_VERSION}/community >> /out/etc/apk/repositories
-  fi
+  echo https://dl-cdn.alpinelinux.org/alpine/${ALPINE_VERSION}/community >> /out/etc/apk/repositories
   cp -a /etc/alpine-release /etc/issue /etc/os-release /out/etc/
   echo $(xx-info alpine-arch) > /out/etc/apk/arch
   apk add --no-cache --initdb -p /out --allow-untrusted alpine-keys
